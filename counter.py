@@ -4,7 +4,7 @@ import time
 import datetime
 import RPi.GPIO as GPIO
 from collections import deque
-from influxdb import InfluxDBClient
+# from influxdb import InfluxDBClient
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -16,7 +16,9 @@ usvh_ratio = 0.00277 # This is for the SBM20 tube
 
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(8, GPIO.IN)
-GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
+# ?remove callback feature
+# GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
+GPIO.add_event_detect(8, GPIO.FALLING)
 
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
@@ -55,5 +57,5 @@ while True:
             counts_5sec = counts_now
 
         loop_count = 0
-        
-            time.sleep(1)
+
+time.sleep(1)
