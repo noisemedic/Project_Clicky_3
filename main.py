@@ -4,7 +4,7 @@
 
 import time
 import datetime
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 from collections import deque
 # from influxdb import InfluxDBClient
 
