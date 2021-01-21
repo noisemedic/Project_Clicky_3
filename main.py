@@ -42,7 +42,8 @@ while True:
     if loop_count == 10:
         # Every 10th iteration check if counts_now>counts_5sec
         print("Clickity clackity clockity cleckity cloo!")
-"""
+        loop_count = 0
+        """
         counts_now = int(len(counts))
         if counts_now > counts_5sec:
             print("Current counts:",counts_now)
@@ -59,7 +60,5 @@ while True:
             GPIO.output(10, GPIO.LOW)
             time.sleep(0.75)
             counts_5sec = counts_now
-
-        loop_count = 0
-"""
-time.sleep(1)
+            """
+        time.sleep(1)
