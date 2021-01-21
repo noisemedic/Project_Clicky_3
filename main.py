@@ -4,11 +4,11 @@
 
 import time
 import datetime
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from collections import deque
 # from influxdb import InfluxDBClient
 
-#GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
 
 counts = deque()
 hundredcount = 0
@@ -17,13 +17,13 @@ counts_5sec = 0
 usvh_ratio = 0.00277 # This is for the SBM20 tube
 
 # Set the input with falling edge detection for geiger counter pulses
-#GPIO.setup(8, GPIO.IN)
+GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
 # GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
-#GPIO.add_event_detect(8, GPIO.FALLING)
+GPIO.add_event_detect(8, GPIO.FALLING)
 
 # Set the output pin
-#GPIO.setup(10, GPIO.OUT)
+GPIO.setup(10, GPIO.OUT)
 
 loop_count = 0
 
@@ -42,9 +42,15 @@ while True:
     if loop_count == 10:
         # Every 10th iteration check if counts_now>counts_5sec
         print("Clickity clackity clockity cleckity cloo!")
-        loop_count = 0
-        """
+        GPIO.output(10, GPIO.HIGH)
+        time.sleep(0.15)
+        GPIO.output(10, GPIO.LOW)
         counts_now = int(len(counts))
+        print("Current counts:", counts_now)
+        loop_count = 0
+
+
+        """
         if counts_now > counts_5sec:
             print("Current counts:",counts_now)
             GPIO.output(10, GPIO.HIGH)
