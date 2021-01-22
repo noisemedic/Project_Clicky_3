@@ -25,6 +25,12 @@ GPIO.add_event_detect(8, GPIO.FALLING)
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
 
+# This method fires on edge detection (the pulse from the counter board)
+def countme(channel):
+    global counts 
+    timestamp = datetime.datetime.now()
+    counts.append(timestamp)
+
 loop_count = 0
 
 # In order to calculate CPM we need to store a rolling count of events in the last 60 seconds
