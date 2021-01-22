@@ -27,7 +27,7 @@ GPIO.setup(10, GPIO.OUT)
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
-    global counts 
+    global counts
     timestamp = datetime.datetime.now()
     counts.append(timestamp)
 
@@ -45,12 +45,19 @@ while True:
     except IndexError:
         pass # there are no records in the queue.
 
+# set up counts
+    if GPIO.input(8):
+        counts = counts + 1
+        print("Click!")
+
     if loop_count == 10:
         # Every 10th iteration check if counts_now>counts_5sec
-        print("Clickity clackity clockity cleckity cloo!")
+        # print("Clickity clackity clockity cleckity cloo!")
+"""
         GPIO.output(10, GPIO.HIGH)
         time.sleep(0.15)
         GPIO.output(10, GPIO.LOW)
+"""
         counts_now = int(len(counts))
         if counts_now > counts_5sec:
             print("Current counts:",counts_now)
