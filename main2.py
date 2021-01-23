@@ -19,8 +19,8 @@ usvh_ratio = 0.00277 # This is for the SBM20 tube
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
-# GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
-GPIO.add_event_detect(8, GPIO.FALLING)
+GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
+# GPIO.add_event_detect(8, GPIO.FALLING)
 
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
