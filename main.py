@@ -51,7 +51,7 @@ while True:
     except IndexError:
         pass # there are no records in the queue.
         """
-        if GPIO.input(8)
+        if GPIO.input(8):
             counts = counts + 1
             print("Click!")
 
