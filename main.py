@@ -50,6 +50,8 @@ while True:
     except IndexError:
         pass # there are no records in the queue.
 
+
+
     if loop_count == 10:
         # Every 10th iteration check if counts_now>counts_5sec
         # print("Clickity clackity clockity cleckity cloo!")
