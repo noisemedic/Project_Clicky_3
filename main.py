@@ -57,6 +57,7 @@ while True:
 
         if loop_count == 10:
         # Every 10th iteration check if counts_now>counts_5sec
+<<<<<<< HEAD
         # print("Clickity clackity clockity cleckity cloo!")
 
 #        GPIO.output(10, GPIO.HIGH)
@@ -70,6 +71,15 @@ while True:
                 print("Counts the same as last time")
 
             loop_count = 0
+=======
+        print("Clickity clackity clockity cleckity cloo!")
+        GPIO.output(10, GPIO.HIGH)
+        time.sleep(0.15)
+        GPIO.output(10, GPIO.LOW)
+        counts_now = int(len(counts))
+        print("Current counts:", counts_now)
+        loop_count = 0
+>>>>>>> parent of 818534d... bring in pulse detection
 
 
         """
