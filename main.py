@@ -8,7 +8,7 @@ from collections import deque
 GPIO.setmode(GPIO.BOARD)
 counts = deque()
 hundredcount = 0
-usvh_ratio = 0.00812037037037 # This is for the J305 tube
+counts_5sec = 0
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
@@ -46,7 +46,6 @@ while True:
 
     if loop_count == 10:
         # Every 10th iteration (10 seconds), store a measurement in Influx
-        counts_5sec = 0
         counts_now = int(len(counts))
         if counts_now > counts_5sec:
             print("The geiger counter it go BEEP")
