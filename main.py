@@ -44,13 +44,13 @@ while True:
     loop_count = loop_count + 1
 
     try:
-"""
+        """
         while GPIO.input(8)
             counts = counts + 1
             print("Click!")
     except IndexError:
         pass # there are no records in the queue.
-"""
+        """
         if GPIO.input(8)
             counts = counts + 1
             print("Click!")
