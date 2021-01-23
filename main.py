@@ -43,19 +43,17 @@ loop_count = 0
 while True:
     loop_count = loop_count + 1
 
-    try:
+"""    try:
         while counts[0] < datetime.datetime.now() - datetime.timedelta(seconds=60):
             counts.popleft()
     except IndexError:
         pass # there are no records in the queue.
-
+"""
 # set up counts
     if GPIO.input(8):
         counts = counts + 1
         print("Click!")
-    else:
-        print("No clicky no worky!")
-        
+
     if loop_count == 10:
         # Every 10th iteration check if counts_now>counts_5sec
         # print("Clickity clackity clockity cleckity cloo!")
@@ -67,7 +65,8 @@ while True:
         counts_now = int(len(counts))
         if counts_now > counts_5sec:
             print("Current counts:",counts_now)
-
+        else:
+            print("Counts the same as last time")
         loop_count = 0
 
 
