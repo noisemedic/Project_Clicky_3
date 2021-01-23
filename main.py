@@ -50,12 +50,6 @@ while True:
     except IndexError:
         pass # there are no records in the queue.
 
-# set up counts
-        """
-    if GPIO.input(8):
-        counts = counts + 1
-        print("Click!")
-        """
     if loop_count == 10:
         # Every 10th iteration check if counts_now>counts_5sec
         # print("Clickity clackity clockity cleckity cloo!")
