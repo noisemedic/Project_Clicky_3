@@ -24,6 +24,10 @@ GPIO.add_event_detect(8, GPIO.FALLING)
 
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
+# Blip the buzzer once
+GPIO.output(10, GPIO.HIGH)
+time.sleep(0.5)
+GPIO.output(10, GPIO.LOW)
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
@@ -49,7 +53,9 @@ while True:
     if GPIO.input(8):
         counts = counts + 1
         print("Click!")
-
+    else:
+        print("No clicky no worky!")
+        
     if loop_count == 10:
         # Every 10th iteration check if counts_now>counts_5sec
         # print("Clickity clackity clockity cleckity cloo!")
@@ -61,6 +67,7 @@ while True:
         counts_now = int(len(counts))
         if counts_now > counts_5sec:
             print("Current counts:",counts_now)
+
         loop_count = 0
 
 
@@ -82,3 +89,4 @@ while True:
             counts_5sec = counts_now
             """
         time.sleep(1)
+GPIO.cleanup() # this ensures a clean exit
