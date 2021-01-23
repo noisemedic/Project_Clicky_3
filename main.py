@@ -90,5 +90,3 @@ while True:
             counts_5sec = counts_now
             """
         time.sleep(1)
-
-#GPIO.cleanup() # this ensures a clean exit
