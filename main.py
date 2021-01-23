@@ -63,12 +63,13 @@ while True:
 #        time.sleep(0.15)
 #        GPIO.output(10, GPIO.LOW)
 
-        counts_now = int(len(counts))
-        if counts_now > counts_5sec:
-            print("Current counts:",counts_now)
-        else:
-            print("Counts the same as last time")
-        loop_count = 0
+            counts_now = int(len(counts))
+            if counts_now > counts_5sec:
+                print("Current counts:",counts_now)
+            else:
+                print("Counts the same as last time")
+
+            loop_count = 0
 
 
         """
