@@ -5,7 +5,7 @@ import datetime
 import RPi.GPIO as GPIO
 from collections import deque
 
-
+GPIO.setmode(GPIO.BOARD)
 counts = deque()
 hundredcount = 0
 usvh_ratio = 0.00812037037037 # This is for the J305 tube
