@@ -89,4 +89,4 @@ while True:
             time.sleep(0.75)
             counts_5sec = counts_now
             """
-        time.sleep(1)
+            time.sleep(1)
