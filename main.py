@@ -37,6 +37,38 @@ def clickity():
     GPIO.output(10, GPIO.LOW)
     time.sleep(0.35)
 
+# This pulses the buzzer
+def clickity2():
+    GPIO.output(10, GPIO.HIGH) # shave
+    time.sleep(0.10)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(0.40)
+    GPIO.output(10, GPIO.HIGH) # and
+    time.sleep(0.10)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(0.20)
+    GPIO.output(10, GPIO.HIGH) # a
+    time.sleep(0.10)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(0.20)
+    GPIO.output(10, GPIO.HIGH) # hair
+    time.sleep(0.10)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(0.40)
+    GPIO.output(10, GPIO.HIGH) # cur
+    time.sleep(0.10)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(0.40)
+    GPIO.output(10, GPIO.HIGH) # two
+    time.sleep(0.10)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(0.5)
+    GPIO.output(10, GPIO.HIGH) #bits
+    time.sleep(0.10)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(1)
+
+
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
@@ -63,9 +95,10 @@ while True:
 
         else:
             print("The geiger counter it not go BEEP")
-            clickity()
+            clickity2()
         counts_5sec = counts_now
 
         loop_count = 0
     time.sleep(1)
+
 GPIO.cleanup()
