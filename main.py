@@ -7,19 +7,7 @@ from collections import deque
 
 GPIO.setmode(GPIO.BOARD)
 counts = deque()
-hundredcount = 0
 counts_5sec = 0
-
-# This method fires on edge detection (the pulse from the counter board)
-def countme(channel):
-    global counts, hundredcount
-    timestamp = datetime.datetime.now()
-    counts.append(timestamp)
-
-    # Every time we hit 100 counts, run count100 and reset
-    hundredcount = hundredcount + 1
-    if hundredcount >= 100:
-        hundredcount = 0
 
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(8, GPIO.IN)
@@ -29,6 +17,18 @@ GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
 
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
+
+# This method fires on edge detection (the pulse from the counter board)
+def countme(channel):
+    global counts, hundredcount
+    timestamp = datetime.datetime.now()
+    counts.append(timestamp)
+
+def clickity():
+    GPIO.output(10, GPIO.HIGH)
+    time.sleep(0.15)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(0.85)
 
 loop_count = 0
 
@@ -49,6 +49,7 @@ while True:
         counts_now = int(len(counts))
         if counts_now > counts_5sec:
             print("The geiger counter it go BEEP")
+            clickity()
         else:
             print("The geiger counter it not go BEEP")
 
