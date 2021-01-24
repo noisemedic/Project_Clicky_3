@@ -9,6 +9,19 @@ GPIO.setmode(GPIO.BOARD)
 counts = deque()
 counts_5sec = 0
 
+# This method fires on edge detection (the pulse from the counter board)
+def countme(channel):
+    global counts, hundredcount
+    timestamp = datetime.datetime.now()
+    counts.append(timestamp)
+
+# This pulses the buzzer
+def clickity():
+    GPIO.output(10, GPIO.HIGH)
+    time.sleep(0.15)
+    GPIO.output(10, GPIO.LOW)
+    time.sleep(0.85)
+
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
@@ -17,18 +30,6 @@ GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
 
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
-
-# This method fires on edge detection (the pulse from the counter board)
-def countme(channel):
-    global counts, hundredcount
-    timestamp = datetime.datetime.now()
-    counts.append(timestamp)
-
-def clickity():
-    GPIO.output(10, GPIO.HIGH)
-    time.sleep(0.15)
-    GPIO.output(10, GPIO.LOW)
-    time.sleep(0.85)
 
 loop_count = 0
 
