@@ -44,10 +44,12 @@ while True:
 
         if counts_now > counts_5sec:
             print("The geiger counter it go BEEP")
-            clickity()
+
         else:
             print("The geiger counter it not go BEEP")
+            clickity()
         counts_5sec = counts_now
-        
+
         loop_count = 0
     time.sleep(1)
+GPIO.cleanup()
