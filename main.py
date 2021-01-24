@@ -6,14 +6,13 @@ import RPi.GPIO as GPIO
 from collections import deque
 
 GPIO.setmode(GPIO.BOARD)
-counts = deque()
+counts = 0
 counts_5sec = 0
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
-    global counts, hundredcount
-    timestamp = datetime.datetime.now()
-    counts.append(timestamp)
+    global counts
+    counts = counts + 1
 
 # This pulses the buzzer
 def clickity():
@@ -39,20 +38,16 @@ loop_count = 0
 while True:
     loop_count = loop_count + 1
 
-    try:
-        while counts[0] < datetime.datetime.now() - datetime.timedelta(seconds=60):
-            counts.popleft()
-    except IndexError:
-        pass # there are no records in the queue.
-
     if loop_count == 10:
         # Every 10th iteration (10 seconds), store a measurement in Influx
-        counts_now = int(len(counts))
+        counts_now = counts
+
         if counts_now > counts_5sec:
             print("The geiger counter it go BEEP")
             clickity()
         else:
             print("The geiger counter it not go BEEP")
-
+        counts_5sec = counts_now
+        
         loop_count = 0
     time.sleep(1)
