@@ -57,7 +57,7 @@ while True:
     if loop_count == 10:
         # Every 10th iteration (10 seconds), store a measurement in Influx
         counts_now = counts
-
+        print(counts_now)
         if counts_now > counts_5sec:
             print("The geiger counter it go BEEP")
 
