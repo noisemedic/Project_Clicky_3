@@ -11,7 +11,7 @@ counts_5sec = 0
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
-    #global counts
+    global counts
     counts += 1
 
 # This pulses the buzzer
