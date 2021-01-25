@@ -73,7 +73,8 @@ def clickity2():
 GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
 # GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
-GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
+GPIO.add_event_detect(8, GPIO.FALLING)
+GPIO.add_event_callback(8, self.countme)
 
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
