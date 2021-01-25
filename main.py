@@ -11,7 +11,7 @@ counts_5sec = 0
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
-    global counts
+    #global counts
     counts += 1
 
 # This pulses the buzzer
@@ -68,14 +68,18 @@ def clickity2():
     GPIO.output(10, GPIO.LOW)
     time.sleep(1)
 
+GPIO.setup(8,GPIO.IN)
+GPIO.add_event_detect(8,GPIO.FALLING)
+GPIO.add_event_callback(8self.tick)
 
+"""
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
 # GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
 GPIO.add_event_detect(8, GPIO.FALLING)
 GPIO.add_event_callback(8, countme)
-
+"""
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
 
