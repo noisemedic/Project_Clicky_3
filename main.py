@@ -12,7 +12,7 @@ counts_5sec = 0
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
     global counts
-    counts = counts + 1
+    counts += 1
 
 # This pulses the buzzer
 def clickity():
@@ -73,7 +73,7 @@ def clickity2():
 GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
 # GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
-GPIO.add_event_detect(8, GPIO.BOTH, callback=countme)
+GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
 
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
@@ -89,7 +89,7 @@ while True:
     if loop_count == 5:
         # Every 5h iteration (5 seconds), compare it to 5 seconds ago, if higher then BEEP
         counts_now = counts
-        print(counts_now)
+        print("Total counts:", counts_now)
         if counts_now > counts_5sec:
             print("The geiger counter it go BEEP")
 
