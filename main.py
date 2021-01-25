@@ -70,10 +70,10 @@ def clickity2():
 
 
 # Set the input with falling edge detection for geiger counter pulses
-GPIO.setup(7, GPIO.IN)
+GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
 # GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
-GPIO.add_event_detect(7, GPIO.FALLING, callback=countme)
+GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
 
 # Set the output pin
 GPIO.setup(10, GPIO.OUT)
@@ -86,8 +86,8 @@ loop_count = 0
 while True:
     loop_count = loop_count + 1
 
-    if loop_count == 10:
-        # Every 10th iteration (10 seconds), store a measurement in Influx
+    if loop_count == 5:
+        # Every 5h iteration (5 seconds), compare it to 5 seconds ago, if higher then BEEP
         counts_now = counts
         print(counts_now)
         if counts_now > counts_5sec:
