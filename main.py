@@ -68,9 +68,9 @@ def clickity2():
     GPIO.output(10, GPIO.LOW)
     time.sleep(1)
 
-GPIO.setup(7,GPIO.IN)
-GPIO.add_event_detect(7,GPIO.FALLING)
-GPIO.add_event_callback(7,countme)
+GPIO.setup(8,GPIO.IN)
+GPIO.add_event_detect(8,GPIO.FALLING)
+GPIO.add_event_callback(8,countme)
 
 """
 # Set the input with falling edge detection for geiger counter pulses
