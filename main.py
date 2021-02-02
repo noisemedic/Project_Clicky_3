@@ -77,7 +77,7 @@ GPIO.add_event_callback(8,countme)
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
-GPIO.add_event_detect(8, GPIO.FALLING, callback=countme)
+GPIO.add_event_detect(8, GPIO.RISING, callback=countme)
 #GPIO.add_event_detect(8, GPIO.FALLING)
 #GPIO.add_event_callback(8, countme)
 
