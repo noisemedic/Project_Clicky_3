@@ -1,7 +1,7 @@
 # THE GEIGER COUNTER IT GO BEEEEEEEEEEEEEEEP
 
 import time
-import datetime
+import date
 import RPi.GPIO as GPIO
 from collections import deque
 
@@ -77,7 +77,7 @@ GPIO.add_event_callback(8,countme)
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(8, GPIO.IN)
 # ?remove callback feature
-GPIO.add_event_detect(8, GPIO.BOTH, callback=countme)
+GPIO.add_event_detect(8, GPIO.B, callback=countme)
 #GPIO.add_event_detect(8, GPIO.FALLING)
 #GPIO.add_event_callback(8, countme)
 
