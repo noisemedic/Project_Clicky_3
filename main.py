@@ -1,5 +1,5 @@
 # THE GEIGER COUNTER IT GO BEEEEEEEEEEEEEEEP
-#import time
+import time
 #import datetime
 import threading
 import RPi.GPIO as GPIO
