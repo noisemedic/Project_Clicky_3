@@ -1,7 +1,7 @@
 # THE GEIGER COUNTER IT GO BEEEEEEEEEEEEEEEP
-#import time
-#import datetime
-import threading
+
+import time
+import datetime
 import RPi.GPIO as GPIO
 from collections import deque
 
