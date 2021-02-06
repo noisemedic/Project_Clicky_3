@@ -41,7 +41,7 @@ def countmeThread():
   global beep
   if beep == 0:
     GPIO.output(buzzerOut,0)
-    print("NO BUZZ FOR YOU")
+    print("NO BUZZ FOR YOU! Total counts: ",counts_now)
   else:
     beep = beep - 1
     print("BUZZY BUZZ BUZZ! Total counts: ",counts_now)
