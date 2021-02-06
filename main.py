@@ -12,7 +12,6 @@ GPIO.setup(geigerIn,GPIO.IN,GPIO.PUD_DOWN)
 GPIO.setup(buzzerOut,GPIO.OUT)
 
 counts = 0
-counts_5sec = 0
 beep = 0
 
 
@@ -41,10 +40,10 @@ def countmeThread():
   global beep
   if beep == 0:
     GPIO.output(buzzerOut,0)
-    print("NO BUZZ FOR YOU! Total counts: ",counts_now)
+    print("NO BUZZ FOR YOU! Total counts: ",counts)
   else:
     beep = beep - 1
-    print("BUZZY BUZZ BUZZ! Total counts: ",counts_now)
+    print("BUZZY BUZZ BUZZ! Total counts: ",counts)
     GPIO.output(buzzerOut,1) # on
     time.sleep(1.5) # wait 0.15 seconds
     GPIO.output(buzzerOut,0) # off
@@ -58,6 +57,8 @@ t.start()
 
 def countme(channel):
     global beep
+    global counts
+    counts += 1
     beep = 50 # timer is set in 0.1 sec increments, 50 = 5 seconds
     GPIO.output(buzzerOut,1) # buzz immediately
 
