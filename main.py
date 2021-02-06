@@ -57,7 +57,7 @@ t.start()
 # when the detection event procs, it will call the function countme
 
 def countme(channel):
-    global counts
+    global beep
     beep = 50 # timer is set in 0.1 sec increments, 50 = 5 seconds
     GPIO.output(buzzerOut,1) # buzz immediately
 
