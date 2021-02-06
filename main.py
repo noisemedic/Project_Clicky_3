@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BOARD)
 
 geigerIn = 8
 buzzerOut = 10
-GPIO.setup(geigerIn,GPIO.IN,GPIO.PUD_DOWN)
+GPIO.setup(geigerIn,GPIO.IN,GPIO.PUD_UP)
 GPIO.setup(buzzerOut,GPIO.OUT)
 
 counts = 0
